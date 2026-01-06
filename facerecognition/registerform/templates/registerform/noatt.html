@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(185, 224, 247);
+        }
+        center {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            margin: 20px 0;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 1000px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(102, 100, 100);
+            color: white;
+        }
+        tr{
+            background-color: white;
+            color: black;
+        }
+        tr:hover {
+            background-color: #e2e2e2;
+            color: black;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: white;
+            color:#007bff ;
+        }
+        .messages {
+            list-style-type: none;
+            padding: 0;
+        }
+        .messages li {
+            background-color: #ffdddd;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddaaaa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>USER DETAILS</h1>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>DETAILS</th>
+                    <th>DATA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>USER ID</td>
+                    <td>{{users.uid}}</td>
+
+                </tr>
+                <tr>
+                    <td>NAME</td>
+                    <td>{{users.uname}}</td>
+
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td>{{users.uemail}}</td>
+
+                </tr>
+                <tr>
+                    <td>CONTACT</td>
+                    <td>{{users.ucontact}}</td>
+
+                </tr>
+
+            </tbody>
+        </table><br><br>
+        <p>NO ATTENDANCE RECORD FOUND</p>
+        <p>There should be atleast one attendance record for edit access</p>
+        <a href="{% url 'userlogin' %}"><button>LOG OUT</button></a>
+
+    </center>
+</body>
+</html>

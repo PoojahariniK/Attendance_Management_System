@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(185, 224, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .sliding-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(59, 57, 57);
+            position: relative;
+            top: 50%;
+            left: -100%;
+            transform: translateY(-50%);
+            animation: slide-in 2s forwards;
+        }
+        @keyframes slide-in {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            color: red;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            width:100%;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px ;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="submit"]:hover {
+            background-color: white;
+            color: #007bff;
+        }
+        a {
+            color: rgb(59, 57, 57);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        button:hover {
+            background-color: white;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}"><button class="home-button">Home</button></a>
+    <center>
+        <h1 class="sliding-text">LOGIN</h1>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+             {% endfor %}
+        </ul>
+        {% endif %}
+        <form name="login" method="post" action="{% url 'getback' %}" autocomplete="off">
+            {% csrf_token %}
+            <label for="lemail">EMAIL:</label>
+            <input type="text" name="lemail" placeholder="ENTER EMAIL" width="200" autocomplete="off" required><br>
+            <label for="lpassword">PASSWORD:</label>    
+            <input type="password" name="lpassword"placeholder="Enter password" width="200" autocomplete="off" required><br>
+            <input type="submit" name="logbutton" value="LOGIN" width="300" height="100">
+            
+        </form>
+        <p>Don't have account?<a href="{% url 'userreg' %}">Register Here</a></p>
+        
+    </center>
+</body>
+</html>

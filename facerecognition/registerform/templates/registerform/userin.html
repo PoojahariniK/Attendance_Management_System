@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(185, 224, 247);
+        }
+        center {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            margin: 20px 0;
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 1000px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(102, 100, 100);
+            color: white;
+        }
+        tr{
+            background-color: white;
+            color: black;
+        }
+        tr:hover {
+            background-color: #e2e2e2;
+            color: black;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: white;
+            color:#007bff ;
+        }
+        .messages {
+            list-style-type: none;
+            padding: 0;
+        }
+        .messages li {
+            background-color: #ffdddd;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ddaaaa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <h1>HI {{users.0.name}},{{access}}logged in successfully</h1>
+        <h1>USER DETAILS</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>DETAILS</th>
+                    <th>DATA</th>
+                    <th>EDIT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>USER ID</td>
+                    <td>{{users.0.userid}}</td>
+                    <td>Can't be edited</td>
+                </tr>
+                <tr>
+                    <td>NAME</td>
+                    <td>{{users.0.name}}</td>
+                    <td><a href="{% url 'editname_em' users.0.name %}"><button>EDIT</button></a></td>
+                </tr>
+                <tr>
+                    <td>EMAIL</td>
+                    <td>{{users.0.email}}</td>
+                    <td>Can't be edited</td>
+                </tr>
+                <tr>
+                    <td>CONTACT</td>
+                    <td>{{users.0.contact}}</td>
+                    <td><a href="{% url 'editcontact_em' users.0.contact %}"><button>EDIT</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h1>ATTENDANCE RECORDS</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>DATE</th>
+                    <th>TIME</th>
+                    <th>STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{user.date}}</td>
+                    <td>{{user.time}}</td>
+                    <td>{{user.status}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'userlogin' %}"><button>LOG OUT</button></a>
+    </center>
+</body>
+</html>

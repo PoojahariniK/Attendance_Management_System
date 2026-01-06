@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+         margin: 0;
+        padding: 0;
+      }
+      center {
+        margin-top: 50px;
+        margin: auto;
+
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+        display: inline-block;
+        margin: auto;
+      }
+      pre {
+        text-align: left;
+        font-size: 16px;
+        margin: 0;
+      }
+      input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      } */
+      body {
+        font-family: Arial, sans-serif;
+        background-color:rgb(185, 224, 247) ;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+      }
+      pre {
+        text-align: left;
+        font-size: 16px;
+        margin: 0;
+      }
+      input[type="text"] {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      input[type="submit"] {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: white;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <form
+        name="edit"
+        method="post"
+        action="{% url 'editvalue' users.uname %}"
+      >
+        {% csrf_token %}
+        <pre>
+            CURRENT NAME:{{users.uname}} <br>
+            NAME:<input type="text" name="editedname" placeholder="ENTER NEW NAME" width="200" required><br>
+            <input type="submit" name="updatebutton" value="UPDATE" width="300" height="100">
+        </pre>
+      </form>
+    </center>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .sliding-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(59, 57, 57);
+            position: relative;
+            top: 50%;
+            left: -100%;
+            transform: translateY(-50%);
+            animation: slide-in 2s forwards;
+        }
+        @keyframes slide-in {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(185, 224, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color:white ;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <p class="sliding-text">ATTENDANCE MANAGEMENT SYSTEM</p>
+    <a href="{% url 'attendance' %}"><button class="btn">Mark attendance</button></a><br>
+    <a href="{% url 'userreg' %}"><button class="btn">Register</button></a><br>
+    <a href="{% url 'userlogin' %}"><button class="btn">Login</button></a>
+    </center>
+</body>
+</html>

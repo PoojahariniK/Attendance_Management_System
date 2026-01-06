@@ -1,0 +1,54 @@
+# ======================
+# Python cache & compiled files
+# ======================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+
+# ======================
+# Virtual environments & env files
+# ======================
+myenv/
+venv/
+.env/
+*.env
+
+# ======================
+# OS & Editor files
+# ======================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.hintrc
+
+# ======================
+# Database
+# ======================
+*.sqlite3
+
+# ======================
+# Media, temp & biometric data
+# ======================
+media/
+temp/
+temp/*.jpg
+temp/*.png
+
+# ======================
+# Backups & old files
+# ======================
+backup/
+registerform/backup/
+*.log
+*.bak
+*.swp
+
+# ======================
+# ML models & weights
+# ======================
+*.h5
+*.keras
+*.pt
+*.pth

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(185, 224, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .sliding-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(59, 57, 57);
+            position: relative;
+            top: 50%;
+            left: -100%;
+            transform: translateY(-50%);
+            animation: slide-in 2s forwards;
+        }
+        @keyframes slide-in {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            color: black;
+        }
+        td a {
+            text-decoration: none;
+            color:black;
+            transition: color 0.3s ease;
+        }
+        td a:hover {
+            color:  #007bff;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: white;
+            color: #007bff;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <h1 class="sliding-text">Employee List</h1>
+            <table>
+                <thead>
+                    <th>EMPLOYEEID</th>
+                    <th>USERNAME</th>
+                </thead>
+                <tbody>
+                    {% for name in names %}
+                        <tr>
+                            <td>{{name.uid}}</td>
+                            <td><a href="{% url 'userrecord' name.uid %}">{{name.uname}}</a></td>
+                        </tr>
+                    {% endfor %}
+    
+                </tbody>
+            </table>
+            <br>
+            <a href="{% url 'userlogin' %}"><button>LOGOUT</button></a>
+        </center>
+    </div>    
+</body>
+</html>

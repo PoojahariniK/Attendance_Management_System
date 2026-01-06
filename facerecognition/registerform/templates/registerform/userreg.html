@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(185, 224, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .sliding-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(59, 57, 57);
+            position: relative;
+            top: 50%;
+            left: -100%;
+            transform: translateY(-50%);
+            animation: slide-in 2s forwards;
+        }
+        @keyframes slide-in {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            50% {
+                left: 50%;
+                opacity: 1;
+            }
+            100% {
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+            color: red;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            width:100%;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px ;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="submit"]:hover {
+            background-color: white;
+            color: #007bff;
+        }
+        a {
+            color: rgb(59, 57, 57);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            
+        }
+
+        button:hover {
+            background-color: white;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'home' %}" class="home-button"><button>Home</button></a>
+        <center>
+            <h1 class="sliding-text">REGISTER FORM</h1>
+                <!-- Display Messages -->
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            <form name="register" method="post" action="{% url 'insertuser' %}">
+                {% csrf_token %}
+                
+                    <label for="tuid">UID:</label> 
+                    <input type="text" name="tuid" value="" width="200"   required placeholder="enter uid" autocomplete><br>
+                    <label for="tuname">NAME:</label> 
+                    <input type="text" name="tuname" value="" width="200" required maxlength="100" placeholder="enter name"><br>
+                    <label for="tuemail">EMAIL:</label>
+                    <input type="text"name="tuemail" value="" width="200" required placeholder="enter email"><br>
+                    <label for="tucontact">CONTACT:</label> 
+                    <input type="text" name="tucontact" value="" width="200"   required placeholder="enter contact number"><br>
+                    <label for="tupassword">PASSWORD:</label> 
+                    <input type="password" name="tupassword" value="" width="200" required placeholder="atleast one uppercase,lowercase,numbers,special character(limit:16)"><br>
+                    <label for="tuconfirmpassword">CONFIRM PASSWORD :</label> 
+                    <input type="password" name="tuconfirmpassword" value="" width="200" required placeholder="re-enter the password"><br>
+                    <p>on clicking register snap will be taken for future authentication </p>
+                    <input type="submit" name="regsub" value="CLICK TO REGISTER" width="300" height="100" >
+                
+            </form>
+            <p>Have an account?<a href="{% url 'userlogin' %}">Login here</a></p>
+
+        </center>
+    </div>
+    
+</body>
+</html>

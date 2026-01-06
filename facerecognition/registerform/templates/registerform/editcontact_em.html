@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+          body {
+        font-family: Arial, sans-serif;
+        background-color:rgb(185, 224, 247) ;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 500px;
+      }
+      pre {
+        text-align: left;
+        font-size: 16px;
+        margin: 0;
+      }
+      input[type="text"] {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      input[type="submit"] {
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: white;
+        color: #007bff;
+      }
+  </style>
+  <body>
+    <center>
+      <form name="edit" method="post" action="{% url 'editvalue_contact_em' users.ucontact %}">
+        {% csrf_token %}
+        <pre>
+            CURRENT CONTACT:{{users.ucontact}} <br>
+            CONTACT:<input type="text" name="editedcontact" placeholder="ENTER NEW NAME" width="200" required><br>
+            <input type="submit" name="updatebutton" value="UPDATE" width="300" height="100">
+        </pre>
+      </form>
+    </center>
+  </body>
+</html>
